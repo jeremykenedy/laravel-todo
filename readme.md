@@ -39,3 +39,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 5. sudo php artistan migrate
 6. sudo php artisan db:seed
 	6a. sudo chmod -R 777 ../laravel_todo
+	// HELPFUL OPTIONAL SHOW YOUR ROUTES COMMAND
+	6b. sudo php artisan route:list
+
+

@@ -11,10 +11,29 @@
 |
 */
 
+// PUBLIC HOMEPAGE ROUTE
 Route::get('/', function () {
     return view('welcome');
 });
 
+// INSTANTIATE AUTH ROUTING AND ESTABLISH LOGOUT ROUTE
 Route::auth();
 
+// USER HOMEPAGE ROUTE
 Route::get('/home', 'HomeController@index');
+
+// USER PROJECTS ROUTES
+Route::resource('projects', 'ProjectsController');
+
+// USER TASKS ROUTES
+Route::resource('tasks', 'TasksController');
+
+// SLUG BASED USER TASKS ROUTES
+Route::bind('tasks', function($value, $route) {
+	return App\Task::whereSlug($value)->first();
+});
+
+// SLUG BASED USER PROJECTS ROUTES
+Route::bind('projects', function($value, $route) {
+	return App\Project::whereSlug($value)->first();
+});
