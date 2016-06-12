@@ -17,16 +17,14 @@ class UsersTableSeeder extends Seeder
 
 		// ADD SOME DATA
 		$users = array(
-			['name' => 'Phillip Fry','email' => 'jeremykenedy@gmail.com','password' => Hash::make('secret')],
-			['name' => 'Bender Rodriguez','email' => 'jeremy@jeremykenedy.com','password' => Hash::make('secret')],
-			['name' => 'Hermes Conrad','email' => 'jeremy@consultjeremy.com','password' => Hash::make('secret')],
-			['name' => 'Hubert Farnsworth','email' => 'jeremyekenedy@gmail.com','password' => Hash::make('secret')],
+			['id' => 1, 'name' => 'Phillip Fry', 'email' => 'jeremykenedy@gmail.com','password' => Hash::make('secret')],
+			['id' => 2, 'name' => 'Bender Rodriguez', 'email' => 'jeremy@jeremykenedy.com','password' => Hash::make('secret')],
+			['id' => 3, 'name' => 'Hermes Conrad', 'email' => 'jeremy@consultjeremy.com','password' => Hash::make('secret')],
+			['id' => 4, 'name' => 'Hubert Farnsworth', 'email' => 'jeremyekenedy@gmail.com','password' => Hash::make('secret')],
 		);
 
-		// INSERT THE DATA
-		foreach ($users as $user)
-		{
-			User::create($user);
-		}
+        // INSERT THE DATA
+        DB::table('users')->insert($users);
+
 	}
 }
