@@ -22,11 +22,11 @@ Route::auth();
 // USER HOMEPAGE ROUTE
 Route::get('/home', 'HomeController@index');
 
-// USER PROJECTS ROUTES
-Route::resource('projects', 'ProjectsController');
 
-// USER TASKS ROUTES
-Route::resource('tasks', 'TasksController');
+
+// ROUTE CONTROLLER METHODS WITH OBJECTS IN PLACE OF ID
+Route::model('tasks', 'Task');
+Route::model('projects', 'Project');
 
 // SLUG BASED USER TASKS ROUTES
 Route::bind('tasks', function($value, $route) {
@@ -37,3 +37,9 @@ Route::bind('tasks', function($value, $route) {
 Route::bind('projects', function($value, $route) {
 	return App\Project::whereSlug($value)->first();
 });
+
+// USER PROJECTS ROUTES
+Route::resource('projects', 'ProjectsController');
+
+// USER TASKS ROUTES
+Route::resource('projects.tasks', 'TasksController');
