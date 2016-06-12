@@ -23,7 +23,5 @@ class ProjectsTableSeeder extends Seeder
 
         // INSERT THE DATA
         DB::table('projects')->insert($projects);
-
-
     }
 }

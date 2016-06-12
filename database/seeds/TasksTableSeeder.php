@@ -11,7 +11,6 @@ class TasksTableSeeder extends Seeder
      */
     public function run()
     {
-
         // CLEAR THE TABLE
         DB::table('tasks')->delete();
 

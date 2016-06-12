@@ -11,7 +11,6 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
 	{
-
 		// CLEAR THE TABLE
 		DB::table('users')->delete();
 
@@ -25,6 +24,5 @@ class UsersTableSeeder extends Seeder
 
         // INSERT THE DATA
         DB::table('users')->insert($users);
-
 	}
 }

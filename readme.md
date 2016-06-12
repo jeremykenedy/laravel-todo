@@ -25,3 +25,17 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+
+## == WORKING BELOW ==
+## == WORKING BELOW ==
+## == WORKING BELOW ==
+## == WORKING BELOW ==
+
+1. sudo git clone laravel_todo laravel_todo
+2. sudo composer update
+3. sudo cp .env.example .env
+	3a. Config .env file
+4. sudo composer dump-autoload
+5. sudo php artistan migrate
+6. sudo php artisan db:seed
+	6a. sudo chmod -R 777 ../laravel_todo
