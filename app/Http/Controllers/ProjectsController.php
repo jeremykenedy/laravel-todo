@@ -7,9 +7,16 @@ use App\Project;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use Redirect;
 
 class ProjectsController extends Controller
 {
+
+	protected $rules = [
+		'name' 	=> ['required', 'min:2'],
+		'slug'	=> ['required'],
+	];
+
     /**
      * Create a new controller instance.
      *
@@ -46,9 +53,14 @@ class ProjectsController extends Controller
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+		$this->validate($request, $this->rules);
+
+		$input = $request->all();
+		Project::create( $input );
+
+		return Redirect::route('projects.index')->with('message', 'Project created');
 	}
 
 	/**
@@ -79,9 +91,14 @@ class ProjectsController extends Controller
 	 * @param  \App\Project $project
 	 * @return Response
 	 */
-	public function update(Project $project)
+	public function update(Project $project, Request $request)
 	{
-		//
+		$this->validate($request, $this->rules);
+
+		$input = array_except($request->all(), '_method');
+		$project->update($input);
+
+		return Redirect::route('projects.show', $project->slug)->with('message', 'Project updated.');
 	}
 
 	/**
@@ -92,10 +109,9 @@ class ProjectsController extends Controller
 	 */
 	public function destroy(Project $project)
 	{
-		//
+		$project->delete();
+
+		return Redirect::route('projects.index')->with('message', 'Project deleted.');
 	}
-
-
-
 
 }

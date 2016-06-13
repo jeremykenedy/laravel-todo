@@ -57,6 +57,7 @@
                         <li><a href="{{ url('/login') }}">Login</a></li>
                         <li><a href="{{ url('/register') }}">Register</a></li>
                     @else
+                        <li><a href="{{ url('/projects') }}">Projects</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ Auth::user()->name }} <span class="caret"></span>
@@ -71,6 +72,19 @@
             </div>
         </div>
     </nav>
+
+    @if (Session::has('message'))
+        <div class="flash alert-info">
+            <p>{{ Session::get('message') }}</p>
+        </div>
+    @endif
+    @if ($errors->any())
+        <div class='flash alert-danger'>
+            @foreach ( $errors->all() as $error )
+                <p>{{ $error }}</p>
+            @endforeach
+        </div>
+    @endif
 
     @yield('content')
 
