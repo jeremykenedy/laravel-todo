@@ -13,11 +13,26 @@
 
                     </div>
                     <div class="panel-body">
+
 						{{ $task->description }}
+
+                    </div>
+                    <div class="panel-footer">
+                        <a href="{{ route('projects.show', $project->slug) }}" class="btn btn-sm btn-info" type="button">
+                            <span class="fa fa-reply" aria-hidden="true"></span> Back to {{ $project->name }}
+                        </a>
+                        <a href="{{ route('projects.tasks.edit', array($project->slug, $task->slug)) }}" class="btn btn-sm btn-warning">
+                            <span class="fa fa-fw fa-pencil" aria-hidden="true"></span>
+                            <span class="hidden-xs">
+                                Edit
+                            </span>
+                            <span class="hidden-sm hidden-xs">
+                                Task
+                            </span>
+                        </a>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 @endsection

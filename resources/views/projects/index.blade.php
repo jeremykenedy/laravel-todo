@@ -35,7 +35,18 @@
 		                                <tr>
 		                                    <td align="center">
 								                {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('projects.destroy', $project->slug))) !!}
-													<a href="{{ route('projects.edit', array($project->slug)) }}" class="btn btn-default">
+
+													<a href="{{ route('projects.show', $project->slug) }}" class="btn btn-default">
+														<span class="fa fa-fw fa-eye" aria-hidden="true"></span>
+														<span class="hidden-xs">
+															View
+														</span>
+														<span class="hidden-sm hidden-xs">
+															Project
+														</span>
+													</a>
+
+													<a href="{{ route('projects.edit', array($project->slug)) }}" class="btn btn-warning">
 														<span class="fa fa-fw fa-pencil" aria-hidden="true"></span>
 														<span class="hidden-xs">
 															Edit
@@ -44,7 +55,9 @@
 															Project
 														</span>
 													</a>
+
 													{{Form::button('<span class="fa fa-fw fa-trash" aria-hidden="true"></span> <span class="hidden-xs">Delete</span> <span class="hidden-sm hidden-xs">Project</span>', array('type' => 'submit', 'class' => 'btn btn-danger'))}}
+
 								                {!! Form::close() !!}
 		                                    </td>
 		                                    <td class="hidden-xs">

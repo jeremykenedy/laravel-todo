@@ -17,7 +17,8 @@
                     </div>
                     <div class="panel-body">
                         @if ( !$project->tasks->count() )
-                            There are no tasks.
+                            There are no tasks. <a href="/projects/{{$project->slug}}/tasks/create">Create one</a>.
+
                         @else
                             <table class="table table-striped table-bordered table-list">
                                 <thead>
@@ -42,10 +43,13 @@
                                             <td align="center">
                                                 {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('projects.tasks.destroy', $project->slug, $task->slug))) !!}
 
-                                                    <a href="{{ route('projects.tasks.edit', array($project->slug, $task->slug)) }}" class="btn btn-default">
+                                                    <a href="{{ route('projects.tasks.show', array($project->slug, $task->slug)) }}" class="btn btn-default">
                                                         <span class="fa fa-fw fa-eye" aria-hidden="true"></span>
                                                         <span class="hidden-xs">
                                                             View
+                                                        </span>
+                                                        <span class="hidden-sm hidden-xs">
+                                                            Task
                                                         </span>
                                                     </a>
 
@@ -54,9 +58,12 @@
                                                         <span class="hidden-xs">
                                                             Edit
                                                         </span>
+                                                        <span class="hidden-sm hidden-xs">
+                                                            Task
+                                                        </span>
                                                     </a>
 
-                                                    {{Form::button('<span class="fa fa-trash fa-fw" aria-hidden="true"></span> <span class="hidden-xs">Delete</span>', array('type' => 'submit', 'class' => 'btn btn-danger'))}}
+                                                    {{Form::button('<span class="fa fa-trash fa-fw" aria-hidden="true"></span> <span class="hidden-xs">Delete</span> <span class="hidden-sm hidden-xs">Task</span>', array('type' => 'submit', 'class' => 'btn btn-danger'))}}
 
                                                 {!! Form::close() !!}
 
@@ -67,11 +74,11 @@
                             </table>
                         @endif
                     </div>
-                     <div class="panel-footer">
+                    <div class="panel-footer">
                         <a href="{{ route('projects.index') }}" class="btn btn-sm btn-info" type="button">
                             <span class="fa fa-reply" aria-hidden="true"></span> Back to Projects
                         </a>
-                     </div>
+                    </div>
                 </div>
             </div>
         </div>
