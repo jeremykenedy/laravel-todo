@@ -75,16 +75,19 @@
 
     @if (Session::has('message'))
         <div class="container">
-            <div class="flash alert-info">
+            <div class="flash alert alert-info" role="alert">
                 <p>{{ Session::get('message') }}</p>
             </div>
         </div>
     @endif
+
     @if ($errors->any())
         <div class="container">
-            <div class='flash alert-danger'>
+            <div class="flash alert alert-danger" role="alert">
                 @foreach ( $errors->all() as $error )
-                    <p>{{ $error }}</p>
+                    <p>
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> <span class="sr-only">Error:</span> {{ $error }}
+                    </p>
                 @endforeach
             </div>
         </div>
